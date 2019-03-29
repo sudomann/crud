@@ -1,0 +1,19 @@
+{
+  "name": "crud-project",
+  "version": "1.0.0",
+  "description": "Backend CRUD application that consumes RESTful services using Nodejs and a database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudomann/crud.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sudomann/crud/issues"
+  },
+  "homepage": "https://github.com/sudomann/crud#readme"
+}
