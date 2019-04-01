@@ -17,6 +17,56 @@
   </style>
 </head>  
 <body>
-
+  <script>  
+    const AddUpdateCourse = {
+      props: ['course', 'title'],
+      data () {
+        return {
+          id: this.course ? this.course.id : null,
+          profName: this.course ? this.course.profName : '',
+          notes: this.course ? this.course.notes : '',
+          code: this.course ? this.course.code : ''
+        }
+      },
+      methods: {
+        save() {
+          this.$emit('save-course', { id: this.id, profName: this.profName, notes: this.notes, code: this.code })
+          if (!this.id) {
+            this.profName = ''
+            this.notes = ''
+            this.code = ''
+          }
+        }
+      },
+      template: `
+        <form class="form" @submit.prevent="save">
+          <h3 class='subtitle'>{{ title }}</h3>
+          <div class="field">
+              <label>Professor Name</label>
+              <div class="control">
+                <input class="input" type="text" v-model="profName">
+              </div> 
+          </div>
+          <div class="field">
+              <label>Course Notes</label>
+              <div class="control">
+                <input class="input" type="text" v-model="notes">
+              </div> 
+          </div>
+          <div class="field">
+              <label>Course Code</label>
+              <div class="control">
+                <input class="input" type="text" v-model="code">
+              </div> 
+          </div>
+          <div class="field">
+              <div class="control">
+                <button class="button is-success">Save</button>
+              </div> 
+          </div>
+        </form>
+      `
+    }
+  </script>
 </body>  
 </html>  
