@@ -27,6 +27,13 @@ module.exports = {
       createdAt: new Date().toDateString(),
       updatedAt: new Date().toDateString()
     }, {
+      author: 'Zach Holochwost',
+      date: 'Thursday',
+      text: 'Testing',
+      email: 'somebody@someone.com',
+      createdAt: new Date().toDateString(),
+      updatedAt: new Date().toDateString()
+    },{
       author: 'Zach',
       date: '4/1/2019',
       text: 'Lorem Ipsum Dolor notes la di dah',
