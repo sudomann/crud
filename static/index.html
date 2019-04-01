@@ -18,23 +18,23 @@
 </head>  
 <body>
   <script>  
-    const AddUpdateCourse = {
-      props: ['course', 'title'],
+    const AddUpdateNote = {
+      props: ['note', 'title'],
       data () {
         return {
-          id: this.course ? this.course.id : null,
-          profName: this.course ? this.course.profName : '',
-          notes: this.course ? this.course.notes : '',
-          code: this.course ? this.course.code : ''
+          id: this.note ? this.note.id : null,
+          author: this.note ? this.note.author : '',
+          date: this.note ? this.note.date : '',
+          text: this.note ? this.note.text : ''
         }
       },
       methods: {
         save() {
-          this.$emit('save-course', { id: this.id, profName: this.profName, notes: this.notes, code: this.code })
+          this.$emit('save-note', { id: this.id, author: this.author, date: this.date, text: this.text })
           if (!this.id) {
-            this.profName = ''
-            this.notes = ''
-            this.code = ''
+            this.author = ''
+            this.date = ''
+            this.text = ''
           }
         }
       },
@@ -42,21 +42,21 @@
         <form class="form" @submit.prevent="save">
           <h3 class='subtitle'>{{ title }}</h3>
           <div class="field">
-              <label>Professor Name</label>
+              <label>Your Name</label>
               <div class="control">
-                <input class="input" type="text" v-model="profName">
+                <input class="input" type="text" v-model="author">
               </div> 
           </div>
           <div class="field">
-              <label>Course Notes</label>
+              <label>Todays's Date</label>
               <div class="control">
-                <input class="input" type="text" v-model="notes">
+                <input class="input" type="text" v-model="date">
               </div> 
           </div>
           <div class="field">
-              <label>Course Code</label>
+              <label>Note text</label>
               <div class="control">
-                <input class="input" type="text" v-model="code">
+                <input class="input" type="text" v-model="text">
               </div> 
           </div>
           <div class="field">
@@ -67,6 +67,41 @@
         </form>
       `
     }
-  </script>
+
+    const Note = {
+    props: ['note'],
+    components: { 'add-update-note': AddUpdateNote },
+    data () {
+      return {
+        showDetail: false
+      }
+    },
+    methods: {
+      onAddOrUpdateNote(note) {
+        this.$emit('save-note', note)
+      },
+      deleteNote (note) {
+        this.$emit('delete-note', note)
+      }
+    },
+    template: `
+      <div class="card">
+        <header class="card-header">
+          <p @click="showDetail = !showDetail" class="card-header-title">
+            {{ note.author }} {{ note.date }}
+          </p>
+          <a class="card-header-icon" @click.stop="deleteNote(note)">
+            <span class="icon">
+              <i class="fa fa-trash"></i>
+            </span>
+          </a>
+        </header>
+        <div v-show="showDetail" class="card-content">
+            <add-update-note title="Details" :note="note" @save-note="onAddOrUpdateNote" />
+        </div>
+      </div>
+    `
+  }
+  </script>  
 </body>  
 </html>  
