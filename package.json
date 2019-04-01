@@ -1,0 +1,19 @@
+{
+  "name": "crud",
+  "version": "1.0.0",
+  "description": "A CRUD application that consumes RESTful services built with  Nodejs and SQLite",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudomann/crud.git"
+  },
+  "author": "Willy Njundong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sudomann/crud/issues"
+  },
+  "homepage": "https://github.com/sudomann/crud#readme"
+}
