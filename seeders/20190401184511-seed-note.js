@@ -21,13 +21,13 @@ module.exports = {
       updatedAt: new Date().toDateString()
     }, {
       author: 'Zach Holochwost',
-      date: 'Doo',
-      text: '444-555-6666',
-      email: 'scooby.doo@misterymachine.com',
+      date: 'Monday',
+      text: 'Hello World',
+      email: 'email@something.com',
       createdAt: new Date().toDateString(),
       updatedAt: new Date().toDateString()
     }, {
-      author: 'Herbie',
+      author: 'Zach',
       date: '4/1/2019',
       text: 'Lorem Ipsum Dolor notes la di dah',
       email: 'zach@email.edu',
