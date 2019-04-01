@@ -102,6 +102,57 @@
       </div>
     `
   }
+
+  new Vue({
+    el: '#app',
+    components: { note: Note, 'add-update-note': AddUpdateNote },
+    data: {
+      notes: [],
+      apiURL: 'http://localhost:3000/api/notes'
+    },
+    methods: {
+      onAddOrUpdateNote (note) {
+        if (note.id) {
+          this.updateNote(note)
+        } else {
+          this.addNote(note)
+        }
+      },
+      addNote (note) {
+        return axios.post(this.apiURL, note)
+          .then((response) => {
+            const copy = this.notes.slice()
+            copy.push(response.data)
+            this.notes = copy
+          })
+      },
+      updateNote (note) {
+        return axios.put(`${this.apiURL}/${note.id}`, note)
+          .then((response) => {
+            const copy = this.notes.slice()
+            const idx = copy.findIndex((c) => c.id === response.data.id)
+            copy[idx] = response.data
+            this.notes = copy
+          })
+      },
+      deleteNote (note) {
+        console.log('deleting', note)
+        return axios.delete(`${this.apiURL}/${note.id}`)
+          .then((response) => {
+            let copy = this.notes.slice()
+            const idx = copy.findIndex((c) => c.id === response.data.id)
+            copy.splice(idx, 1)
+            this.notes = copy
+          })
+      }
+    },
+    beforeMount () {
+      axios.get(this.apiURL)
+        .then((response) => {
+          this.notes = response.data
+        })
+    }
+  })
   </script>  
 </body>  
 </html>  
