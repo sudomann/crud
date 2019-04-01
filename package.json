@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/sudomann/crud/issues"
   },
-  "homepage": "https://github.com/sudomann/crud#readme"
+  "homepage": "https://github.com/sudomann/crud#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.10",
+    "sequelize": "^5.2.8",
+    "sequelize-cli": "^5.4.0",
+    "sqlite3": "^4.0.6"
+  }
 }
