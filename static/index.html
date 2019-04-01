@@ -17,6 +17,21 @@
   </style>
 </head>  
 <body>
+    <div id="app" class="container">
+        <section class="section section-container" style="padding-top: 24px; padding-bottom: 5px;">
+            <h2 class="title">Notes</h2>
+            <note v-for="note in notes"
+                :key="note.name"
+                :note="note"
+                @save-note="onAddOrUpdateNote" 
+                @delete-note="deleteNote" />
+        </section>
+        <section class="section section-container" style="padding-bottom: 10px;">
+          <div class="box">
+            <add-update-note title="Add Note" @save-note="onAddOrUpdateNote" />
+          </div>
+        </section>
+      </div>
   <script>  
     const AddUpdateNote = {
       props: ['note', 'title'],
